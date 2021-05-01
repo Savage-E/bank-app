@@ -35,4 +35,7 @@ build/
 
 ### Maven
 mvnw
-mvnw.cmd
+.cmd
+
+.js
+.json
