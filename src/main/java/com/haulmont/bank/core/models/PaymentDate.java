@@ -28,15 +28,22 @@ public class PaymentDate {
 
   private LocalDate date;
 
-  private int amount;
+  private double amount;
 
   @Column(name = "body_repay_amount ")
-  private int bodyRepaymentAmount;
+  private double bodyRepaymentAmount;
   @Column(name = "interest_repay_amount")
-  private int interestRepaymentAmount;
+  private double interestRepaymentAmount;
 
   @ManyToOne
   @JoinColumns(value = {@JoinColumn(name = "client_id"), @JoinColumn(name = "credit_id")})
   private CreditOffer creditOffer;
 
+  public PaymentDate() {
+    date = LocalDate.now();
+  }
+
+  public String dateToString() {
+    return date.toString();
+  }
 }

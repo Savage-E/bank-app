@@ -9,7 +9,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
@@ -27,8 +27,8 @@ import java.util.List;
 public class CreditForm extends FormLayout {
 
 
-  IntegerField limit = new IntegerField("limit");
-  IntegerField interestRate = new IntegerField("interest rate");
+  NumberField limit = new NumberField("limit");
+  NumberField interestRate = new NumberField("interest rate");
   Button save = new Button("Save");
   Button cancel = new Button("Cancel");
   Button delete = new Button("Delete");
@@ -62,7 +62,7 @@ public class CreditForm extends FormLayout {
     cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
 
-   // save.addClickShortcut(Key.ENTER);
+    // save.addClickShortcut(Key.ENTER);
     cancel.addClickShortcut(Key.ESCAPE);
 
     save.addClickListener(click -> validateAndSave());

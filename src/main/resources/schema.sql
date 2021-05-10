@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS client
 CREATE TABLE IF NOT EXISTS credit
 (
     credit_id     UUID NOT NULL,
-    interest_rate INTEGER,
-    limit         INTEGER,
+    interest_rate DOUBLE,
+    limit         DOUBLE,
     bank_id       UUID NOT NULL,
     PRIMARY KEY (credit_id),
     FOREIGN KEY (bank_id) REFERENCES bank (bank_id)
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS credit_offer
 (
     credit_id  UUID NOT NULL,
     client_id  UUID NOT NULL,
-    loan_amount INTEGER,
+    loan_amount DOUBLE,
     PRIMARY KEY (credit_id, client_id),
     FOREIGN KEY (credit_id) REFERENCES credit (credit_id),
     FOREIGN KEY (client_id) REFERENCES client (client_id)
@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS payment_date
 (
     id                    UUID NOT NULL,
     date                  DATE,
-    amount                INTEGER,
-    body_repay_amount     INTEGER,
-    interest_repay_amount INTEGER,
+    amount                DOUBLE,
+    body_repay_amount     DOUBLE ,
+    interest_repay_amount DOUBLE,
     credit_id             UUID NOT NULL,
     client_id             UUID NOT NULL,
     PRIMARY KEY (id),

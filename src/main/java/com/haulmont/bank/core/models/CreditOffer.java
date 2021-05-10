@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Created by Vlad Kotov
@@ -22,7 +23,7 @@ public class CreditOffer {
   private CreditOfferId creditOfferId;
 
   @Column(name = "loan_amount")
-  private int loanAmount;
+  private double loanAmount;
 
   @MapsId("creditId")
   @ManyToOne
@@ -36,5 +37,28 @@ public class CreditOffer {
 
   public CreditOffer() {
     creditOfferId = new CreditOfferId();
+  }
+
+
+  public UUID getClientId() {
+    return creditOfferId.getClientId();
+  }
+
+
+  public void setClientId(UUID clientUuid) {
+    creditOfferId.setClientId(clientUuid);
+  }
+
+  public UUID getCreditId() {
+    return creditOfferId.getCreditId();
+  }
+
+  public void setCreditId(UUID creditUuid) {
+    creditOfferId.setClientId(creditUuid);
+  }
+
+  public String getCreditOfferId() {
+    return creditOfferId.getCreditId()
+            + "\t" + creditOfferId.getClientId();
   }
 }

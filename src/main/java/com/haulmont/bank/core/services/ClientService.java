@@ -1,6 +1,6 @@
 package com.haulmont.bank.core.services;
 
-import com.haulmont.bank.core.dao.BankDao;
+import com.haulmont.bank.core.dao.BankDAO;
 import com.haulmont.bank.core.dao.ClientDAO;
 import com.haulmont.bank.core.models.Client;
 import org.jboss.logging.Logger;
@@ -22,10 +22,10 @@ public class ClientService {
 
   private static final Logger LOGGER = Logger.getLogger(ClientService.class);
   private final ClientDAO clientDAO;
-  private final BankDao bankDao;
+  private final BankDAO bankDao;
 
   @Autowired
-  public ClientService(ClientDAO clientDAO, BankDao bankDao) {
+  public ClientService(ClientDAO clientDAO, BankDAO bankDao) {
     this.clientDAO = clientDAO;
     this.bankDao = bankDao;
   }

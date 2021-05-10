@@ -20,6 +20,5 @@ public interface CreditDAO extends CrudRepository<Credit, UUID> {
 
   Credit save(Credit credit);
 
-  int deleteAllBy();
   Credit findByCreditId(UUID uuid);
 }

@@ -50,4 +50,13 @@ public class Client {
   @OneToMany(mappedBy = "client", orphanRemoval = true, fetch = FetchType.EAGER)
   private Set<CreditOffer> creditOfferSet;
 
+  public String getClientIdString() {
+    return clientId.toString();
+  }
+
+  public UUID getClientUuid() {
+    return clientId;
+  }
+
+
 }

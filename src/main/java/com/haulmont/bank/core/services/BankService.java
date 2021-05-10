@@ -1,7 +1,7 @@
 package com.haulmont.bank.core.services;
 
 import com.haulmont.bank.core.models.Bank;
-import com.haulmont.bank.core.dao.BankDao;
+import com.haulmont.bank.core.dao.BankDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +18,10 @@ import java.util.List;
 @Service
 public class BankService {
 
-  private final BankDao bankDao;
+  private final BankDAO bankDao;
 
   @Autowired
-  public BankService(BankDao bankDao) {
+  public BankService(BankDAO bankDao) {
     this.bankDao = bankDao;
   }
 

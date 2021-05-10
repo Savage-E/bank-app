@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Vlad Kotov
@@ -26,14 +27,11 @@ public class CreditOfferService {
 
   private static final Logger LOGGER = Logger.getLogger(CreditOfferService.class);
   private final CreditOfferDAO creditOfferDAO;
-  private final CreditDAO creditDAO;
-  private final ClientDAO clientDAO;
 
   @Autowired
   public CreditOfferService(CreditOfferDAO creditOfferDAO, CreditDAO creditDAO, ClientDAO clientDAO) {
     this.creditOfferDAO = creditOfferDAO;
-    this.clientDAO = clientDAO;
-    this.creditDAO = creditDAO;
+
   }
 
   @Transactional
@@ -41,20 +39,28 @@ public class CreditOfferService {
     return creditOfferDAO.findAll();
   }
 
-/*  @Transactional
-  public CreditOffer save(CreditOfferDTO creditOfferDTO) {
-    CreditOffer creditOffer = new CreditOffer();
-    Credit credit = creditDAO.findByCreditId(creditOfferDTO.getCreditId());
-    Client client = clientDAO.findByClientId(creditOfferDTO.getClientId());
+  @Transactional
+  public CreditOffer save(CreditOffer creditOffer) {
+    creditOfferDAO.save(creditOffer);
+    return creditOffer;
+  }
 
+  @Transactional
+  public CreditOffer save(CreditOffer creditOffer, Client client, Credit credit) {
     creditOffer.setCredit(credit);
     creditOffer.setClient(client);
     creditOfferDAO.save(creditOffer);
     return creditOffer;
-  }*/
+  }
 
   @Transactional
-  public int delete() {
-    return creditOfferDAO.deleteBy();
+  public void delete(CreditOffer creditOffer) {
+    creditOfferDAO.delete(creditOffer);
   }
+
+  @Transactional
+  public List<CreditOffer> get(UUID term) {
+    return creditOfferDAO.search(term);
+  }
+
 }

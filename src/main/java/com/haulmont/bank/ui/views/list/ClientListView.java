@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 @Route(value = "", layout = MainLayout.class)
-@PageTitle("clients | Bank app")
+@PageTitle("Clients | Bank app")
 public class ClientListView extends VerticalLayout {
   ClientForm form;
   Grid<Client> grid = new Grid<>(Client.class);
@@ -68,7 +68,7 @@ public class ClientListView extends VerticalLayout {
     filterText.addValueChangeListener(e -> updateList());
 
     Button addClientButton = new Button("Add Client", click -> addClient());
-    HorizontalLayout toolbar = new HorizontalLayout(addClientButton, filterText);
+    HorizontalLayout toolbar = new HorizontalLayout(filterText, addClientButton);
     toolbar.addClassName("client-toolbar");
     return toolbar;
   }

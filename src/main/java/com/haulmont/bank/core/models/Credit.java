@@ -29,16 +29,20 @@ public class Credit {
   @Column(nullable = false, name = "creditId")
   private UUID creditId;
 
-  private int limit;
+  private double limit;
 
   @Column(name = "interest_rate")
-  private int interestRate;
+  private double interestRate;
 
   @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
   @JoinColumn(name = "bank_id")
   @JsonBackReference
   private Bank bank;
-
   @OneToMany(mappedBy = "credit", orphanRemoval = true, fetch = FetchType.EAGER)
   private Set<CreditOffer> creditOfferSet;
+
+  public String getCreditIdString() {
+    return creditId.toString();
+  }
+
 }

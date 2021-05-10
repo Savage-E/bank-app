@@ -1,6 +1,6 @@
 package com.haulmont.bank.core.services;
 
-import com.haulmont.bank.core.dao.BankDao;
+import com.haulmont.bank.core.dao.BankDAO;
 import com.haulmont.bank.core.dao.CreditDAO;
 import com.haulmont.bank.core.models.Credit;
 import org.jboss.logging.Logger;
@@ -23,10 +23,10 @@ public class CreditService {
 
   private static final Logger LOGGER = Logger.getLogger(CreditService.class);
   private final CreditDAO creditDAO;
-  private final BankDao bankDao;
+  private final BankDAO bankDao;
 
   @Autowired
-  public CreditService(CreditDAO creditDAO, BankDao bankDao) {
+  public CreditService(CreditDAO creditDAO, BankDAO bankDao) {
     this.creditDAO = creditDAO;
     this.bankDao = bankDao;
   }

@@ -52,7 +52,7 @@ public class CreditListView extends VerticalLayout {
 
 
     Div content = new Div(grid, form);
-    content.addClassName("content");
+    content.addClassName("credit-content");
     content.setSizeFull();
 
     add(getToolBar(), content);
@@ -74,15 +74,15 @@ public class CreditListView extends VerticalLayout {
     filterText.addValueChangeListener(e -> updateList());
 
     Button addCreditButton = new Button("Add credit", click -> addCredit());
-    HorizontalLayout toolbar = new HorizontalLayout(addCreditButton, filterText);
-    toolbar.addClassName("toolbar");
+    HorizontalLayout toolbar = new HorizontalLayout(filterText, addCreditButton);
+    toolbar.addClassName("credit-toolbar");
     return toolbar;
   }
 
   private void closeEditor() {
     form.setCredit(null);
     form.setVisible(false);
-    removeClassName("editing");
+    removeClassName("credit-editing");
   }
 
   private void addCredit() {
@@ -105,7 +105,7 @@ public class CreditListView extends VerticalLayout {
     } else {
       form.setCredit(credit);
       form.setVisible(true);
-      addClassName("editing");
+      addClassName("credit-editing");
     }
   }
 
@@ -124,10 +124,9 @@ public class CreditListView extends VerticalLayout {
         grid.setItems(creditService.get(uuid));
 
       } catch (IllegalArgumentException ex) {
-        filterText.setErrorMessage("Enter valid Uuid");
+        filterText.setErrorMessage("Get valid Uuid");
       }
     } else {
-
       grid.setItems(creditService.getAll());
     }
   }

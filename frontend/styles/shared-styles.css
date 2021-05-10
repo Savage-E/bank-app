@@ -16,7 +16,15 @@ a[highlight] {
 
 
 /* List view */
-.credit-list-view .content {
+.credit-list-view .credit-content {
+    display: flex;
+}
+
+.payday-list-view .payday-content {
+    display: flex;
+}
+
+.credit-offer-list-view .credit-offer-content {
     display: flex;
 }
 
@@ -28,7 +36,15 @@ a[highlight] {
     flex: 2;
 }
 
+.credit-offer-list-view .credit-offer-grid {
+    flex: 2;
+}
+
 .client-list-view .client-grid {
+    flex: 2;
+}
+
+.payday-list-view .payday-grid {
     flex: 2;
 }
 
@@ -36,22 +52,46 @@ a[highlight] {
     flex: 1;
     padding: var(--lumo-space-m);
 }
-.credit-list-view .credit-form  {
+
+.credit-list-view .credit-form {
     flex: 1;
     padding: var(--lumo-space-m);
 }
 
+.credit-offer-list-view .credit-offer-form {
+    flex: 1;
+    padding: var(--lumo-space-m);
+}
+
+.payday-list-view .payday-form {
+    flex: 1;
+    padding: var(--lumo-space-m);
+}
 @media all and (max-width: 1100px) {
     .client-list-view.client-editing .client-toolbar,
     .client-list-view.client-editing .client-grid {
         display: none;
     }
 }
+
 @media all and (max-width: 1100px) {
-    .credit-list-view.editing .toolbar
-    .client-list-view.client-editing .client-toolbar,
-    .credit-list-view.editing .credit-grid
-    .client-list-view.client-editing .client-grid {
+    .payday-view.payday-editing .payday-toolbar,
+    .payday-list-view.payday-editing .payday-grid {
+        display: none;
+    }
+}
+
+
+@media all and (max-width: 1100px) {
+    .credit-list-view.credit-editing .credit-toolbar,
+    .credit-list-view.credit-editing .credit-grid {
+        display: none;
+    }
+}
+
+@media all and (max-width: 1100px) {
+    .credit-offer-list-view.credit-offer-editing .credit-offer-toolbar,
+    .credit-offer-list-view.credit-offer-editing .credit-offer-grid {
         display: none;
     }
 }

@@ -15,7 +15,7 @@ import java.util.UUID;
  * Description:
  */
 @Repository
-public interface BankDao extends CrudRepository<Bank, UUID> {
+public interface BankDAO extends CrudRepository<Bank, UUID> {
   List<Bank> findAll();
 
   Bank save(Bank bank);

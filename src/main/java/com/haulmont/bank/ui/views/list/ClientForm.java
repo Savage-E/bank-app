@@ -73,7 +73,7 @@ public class ClientForm extends FormLayout {
     cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
 
-//    save.addClickShortcut(Key.ENTER);
+
     cancel.addClickShortcut(Key.ESCAPE);
 
     save.addClickListener(click -> validateAndSave());

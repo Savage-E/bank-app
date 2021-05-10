@@ -1,7 +1,10 @@
 package com.haulmont.bank.ui;
 
+import com.haulmont.bank.ui.views.LoanView;
 import com.haulmont.bank.ui.views.list.ClientListView;
 import com.haulmont.bank.ui.views.list.CreditListView;
+import com.haulmont.bank.ui.views.list.CreditOfferListView;
+import com.haulmont.bank.ui.views.list.PaymentDateListView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -50,9 +53,21 @@ public class MainLayout extends AppLayout {
     RouterLink listLinkClientList = new RouterLink("See clients", ClientListView.class);
     listLinkClientList.setHighlightCondition(HighlightConditions.sameLocation());
 
+    RouterLink listLinkCreditOfferList = new RouterLink("See credit offers", CreditOfferListView.class);
+    listLinkClientList.setHighlightCondition(HighlightConditions.sameLocation());
+
+    RouterLink listLinkPaymentDayList = new RouterLink("See payment dates", PaymentDateListView.class);
+    listLinkClientList.setHighlightCondition(HighlightConditions.sameLocation());
+
+    RouterLink listLinkAddLoan = new RouterLink("Add new credit", LoanView.class);
+    listLinkClientList.setHighlightCondition(HighlightConditions.sameLocation());
+
     addToDrawer(new VerticalLayout(
             listLinkCreditList,
-            listLinkClientList
+            listLinkClientList,
+            listLinkCreditOfferList,
+            listLinkPaymentDayList,
+            listLinkAddLoan
     ));
   }
 
