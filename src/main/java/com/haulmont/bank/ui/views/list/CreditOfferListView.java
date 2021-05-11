@@ -115,7 +115,7 @@ public class CreditOfferListView extends VerticalLayout {
   private void configureGrid() {
     grid.addClassName("credit-offer-grid");
     grid.setSizeFull();
-    grid.setColumns("loanAmount");
+    grid.setColumns("loanAmount", "loanPeriod");
 
     grid.addColumn(creditOffer -> {
       Credit credit = creditOffer.getCredit();
@@ -155,16 +155,15 @@ public class CreditOfferListView extends VerticalLayout {
         grid.setItems(creditOfferService.get(uuid));
 
       } catch (IllegalArgumentException ex) {
-        filterTextClient.setErrorMessage("Get valid Uuid");
+
       }
     } else if (!filterTextCredit.getValue().equals("")) {
       try {
 
-
         UUID uuid = UUID.fromString(filterTextClient.getValue());
         grid.setItems(creditOfferService.get(uuid));
       } catch (IllegalArgumentException ex) {
-        filterTextCredit.setErrorMessage("Get valid Uuid");
+
       }
     } else {
       grid.setItems(creditOfferService.getAll());

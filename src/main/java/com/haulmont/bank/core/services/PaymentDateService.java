@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Vlad Kotov
@@ -49,6 +50,22 @@ public class PaymentDateService {
             .findByCreditIdAndAndCredit(client.getClientUuid(), credit.getCreditId());
     paymentDate.setCreditOffer(creditOffer);
     paymentDateDAO.delete(paymentDate);
+  }
+
+  @Transactional
+  public void save(List<PaymentDate> paymentDates) {
+
+    paymentDateDAO.saveAll(paymentDates);
+  }
+
+  @Transactional
+  public List<PaymentDate> search(UUID clientId, UUID creditId) {
+    return paymentDateDAO.search(creditId, clientId);
+  }
+
+  @Transactional
+  public List<PaymentDate> search(UUID term) {
+    return paymentDateDAO.search(term);
   }
 
 

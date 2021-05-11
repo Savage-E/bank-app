@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -25,6 +27,8 @@ public class CreditOffer {
   @Column(name = "loan_amount")
   private double loanAmount;
 
+  @Column(name = "loan_period")
+  private int loanPeriod;
   @MapsId("creditId")
   @ManyToOne
   @JoinColumn(name = "credit_id")
@@ -35,8 +39,12 @@ public class CreditOffer {
   @JoinColumn(name = "client_id")
   private Client client;
 
+  @OneToMany(mappedBy = "creditOffer", orphanRemoval = true)
+  private Set<PaymentDate> paymentDateSet;
+
   public CreditOffer() {
     creditOfferId = new CreditOfferId();
+    paymentDateSet = new HashSet<>();
   }
 
 
@@ -57,8 +65,4 @@ public class CreditOffer {
     creditOfferId.setClientId(creditUuid);
   }
 
-  public String getCreditOfferId() {
-    return creditOfferId.getCreditId()
-            + "\t" + creditOfferId.getClientId();
-  }
 }

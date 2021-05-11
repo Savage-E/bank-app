@@ -12,6 +12,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
@@ -30,6 +31,8 @@ import java.util.List;
 public class CreditOfferForm extends FormLayout {
 
   NumberField loanAmount = new NumberField("loan amount");
+  IntegerField loanPeriod = new IntegerField("loan period");
+
   ComboBox<Client> client = new ComboBox<>("client");
   ComboBox<Credit> credit = new ComboBox<>("credit");
   Binder<CreditOffer> binder = new BeanValidationBinder<>(CreditOffer.class);
@@ -53,6 +56,7 @@ public class CreditOfferForm extends FormLayout {
             client,
             credit,
             loanAmount,
+            loanPeriod,
             save,
             delete,
             cancel,

@@ -21,7 +21,6 @@ import java.util.UUID;
 @Service
 public class CreditService {
 
-  private static final Logger LOGGER = Logger.getLogger(CreditService.class);
   private final CreditDAO creditDAO;
   private final BankDAO bankDao;
 

@@ -22,7 +22,7 @@ public class DateConverter implements Converter<String, LocalDate> {
       return Result.ok(LocalDate.parse(fieldValue));
     } catch (Exception e) {
 
-      return Result.error("Please enter a right date");
+      return Result.error("Please enter a  date in right format like YYYY-MM-DD");
     }
   }
 

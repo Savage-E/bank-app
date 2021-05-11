@@ -124,7 +124,7 @@ public class CreditListView extends VerticalLayout {
         grid.setItems(creditService.get(uuid));
 
       } catch (IllegalArgumentException ex) {
-        filterText.setErrorMessage("Get valid Uuid");
+
       }
     } else {
       grid.setItems(creditService.getAll());

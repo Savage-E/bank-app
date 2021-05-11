@@ -31,4 +31,5 @@ public interface CreditOfferDAO extends CrudRepository<CreditOffer, CreditOfferI
           "where co.client.clientId = ?1 and co.credit.creditId=?2")
   CreditOffer findByCreditIdAndAndCredit(UUID clientUuid, UUID creditUuid);
 
+
 }

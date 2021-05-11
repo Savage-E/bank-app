@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class ClientService {
 
-  private static final Logger LOGGER = Logger.getLogger(ClientService.class);
+
   private final ClientDAO clientDAO;
   private final BankDAO bankDao;
 

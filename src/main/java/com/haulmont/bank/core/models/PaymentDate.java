@@ -1,6 +1,8 @@
 package com.haulmont.bank.core.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -16,7 +18,8 @@ import java.util.UUID;
  */
 @Entity(name = "payment_date")
 @Table(name = "payment_date")
-@Data
+@Getter
+@Setter
 public class PaymentDate {
   @Id
   @GeneratedValue(generator = "UUID")
@@ -35,7 +38,7 @@ public class PaymentDate {
   @Column(name = "interest_repay_amount")
   private double interestRepaymentAmount;
 
-  @ManyToOne
+  @ManyToOne(cascade = {CascadeType.MERGE})
   @JoinColumns(value = {@JoinColumn(name = "client_id"), @JoinColumn(name = "credit_id")})
   private CreditOffer creditOffer;
 

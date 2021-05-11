@@ -11,11 +11,15 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 /**
  * Created by Vlad Kotov
@@ -34,9 +38,9 @@ public class PaymentDateListView extends VerticalLayout {
   Grid<PaymentDate> grid = new Grid<>(PaymentDate.class);
 
   PaymentDateService paymentDateService;
-  /*TextField filterTextClient = new TextField();
+  TextField filterTextClient = new TextField();
   TextField filterTextCredit = new TextField();
-  */
+
   CreditOfferService creditOfferService;
 
   @Autowired
@@ -81,9 +85,9 @@ public class PaymentDateListView extends VerticalLayout {
     closeEditor();
   }
 
-  //TODO: add filter to PaymentDate view.
+
   private HorizontalLayout getToolBar() {
- /*   filterTextClient.setPlaceholder("Filter by client id...");
+    filterTextClient.setPlaceholder("Filter by client id...");
     filterTextClient.setClearButtonVisible(true);
     filterTextClient.setValueChangeMode(ValueChangeMode.LAZY);
     filterTextClient.addValueChangeListener(e -> updateList());
@@ -91,11 +95,11 @@ public class PaymentDateListView extends VerticalLayout {
     filterTextCredit.setPlaceholder("Filter by credit id...");
     filterTextCredit.setClearButtonVisible(true);
     filterTextCredit.setValueChangeMode(ValueChangeMode.LAZY);
-    filterTextCredit.addValueChangeListener(e -> updateList());*/
+    filterTextCredit.addValueChangeListener(e -> updateList());
 
     Button addPaymentDateButton = new Button("Add payment date ", click -> addPayday());
 
-    HorizontalLayout toolbar = new HorizontalLayout(addPaymentDateButton);
+    HorizontalLayout toolbar = new HorizontalLayout(filterTextClient, filterTextCredit, addPaymentDateButton);
     toolbar.addClassName("payday-toolbar");
     return toolbar;
   }
@@ -144,8 +148,26 @@ public class PaymentDateListView extends VerticalLayout {
 
   private void updateList() {
 
-    grid.setItems(paymentDateService.getAll());
+    try {
+      if (!filterTextClient.getValue().equals("") && !filterTextCredit.getValue().equals("")) {
 
+        UUID clientUuid = UUID.fromString(filterTextClient.getValue());
+        UUID creditUuid = UUID.fromString(filterTextCredit.getValue());
+
+        grid.setItems(paymentDateService.search(clientUuid, creditUuid));
+      } else if (!filterTextClient.getValue().equals("")) {
+        UUID clientUuid = UUID.fromString(filterTextClient.getValue());
+        grid.setItems(paymentDateService.search(clientUuid));
+      } else if (!filterTextCredit.getValue().equals("")) {
+
+        UUID creditUuid = UUID.fromString(filterTextCredit.getValue());
+        grid.setItems(paymentDateService.search(creditUuid));
+      } else {
+        grid.setItems(paymentDateService.getAll());
+      }
+    } catch (IllegalArgumentException illegalArgumentException) {
+
+    }
   }
 
 }

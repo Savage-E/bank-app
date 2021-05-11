@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS credit_offer
     credit_id  UUID NOT NULL,
     client_id  UUID NOT NULL,
     loan_amount DOUBLE,
+    loan_period INTEGER,
     PRIMARY KEY (credit_id, client_id),
     FOREIGN KEY (credit_id) REFERENCES credit (credit_id),
     FOREIGN KEY (client_id) REFERENCES client (client_id)

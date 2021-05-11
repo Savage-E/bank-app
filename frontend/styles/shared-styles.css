@@ -48,6 +48,8 @@ a[highlight] {
     flex: 2;
 }
 
+
+
 .client-list-view .client-form {
     flex: 1;
     padding: var(--lumo-space-m);
@@ -67,12 +69,16 @@ a[highlight] {
     flex: 1;
     padding: var(--lumo-space-m);
 }
+
 @media all and (max-width: 1100px) {
     .client-list-view.client-editing .client-toolbar,
     .client-list-view.client-editing .client-grid {
         display: none;
     }
 }
+
+
+
 
 @media all and (max-width: 1100px) {
     .payday-view.payday-editing .payday-toolbar,

@@ -25,11 +25,11 @@ import java.util.UUID;
 public class CreditOfferService {
 
 
-  private static final Logger LOGGER = Logger.getLogger(CreditOfferService.class);
   private final CreditOfferDAO creditOfferDAO;
 
   @Autowired
-  public CreditOfferService(CreditOfferDAO creditOfferDAO, CreditDAO creditDAO, ClientDAO clientDAO) {
+  public CreditOfferService(CreditOfferDAO creditOfferDAO,
+                            CreditDAO creditDAO, ClientDAO clientDAO) {
     this.creditOfferDAO = creditOfferDAO;
 
   }
@@ -63,4 +63,9 @@ public class CreditOfferService {
     return creditOfferDAO.search(term);
   }
 
+  @Transactional
+  public CreditOffer get(Credit credit, Client client
+  ) {
+    return creditOfferDAO.findByCreditIdAndAndCredit(client.getClientUuid(), credit.getCreditId());
+  }
 }
