@@ -16,4 +16,6 @@ Build and Run
    mvn spring-boot:run 
    ```
 
-2. Open `http://localhost:8080` in a web browser.
+2. Open `http://localhost:8081` in a web browser.
+
+3. User `user` and password `password`
