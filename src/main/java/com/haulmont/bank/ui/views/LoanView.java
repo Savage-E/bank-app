@@ -174,6 +174,8 @@ public class LoanView extends HorizontalLayout {
     loanAmount.clear();
     loanPeriod.clear();
     grid.setItems(Collections.emptyList());
+    calculateButton.setEnabled(false);
+    saveButton.setVisible(false);
   }
 
   private void configureGrid() {
